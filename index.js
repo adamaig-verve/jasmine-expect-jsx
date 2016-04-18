@@ -85,7 +85,7 @@ function toEqualJSX(util, customEqualityTesters) {
       const {actualJSX, expectedJSX, actualJSXc, expectedJSXc} = prepare(actual, expected);
 
       const result = {
-        pass: util.equals(actualJSXc, expectedJSXc, customEqualityTesters)
+        pass: ! util.equals(actualJSXc, expectedJSXc, customEqualityTesters)
       };
       if (!result.pass) {
         result.message = getJSXDiffMessage(actualJSX, expectedJSX);

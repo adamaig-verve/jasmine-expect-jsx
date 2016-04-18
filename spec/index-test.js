@@ -18,6 +18,16 @@ describe('jasmine-expect-jsx', () => {
   }
 
   describe('toEqualJSX', () => {
+    it('should succeed if expected equals actual', () => {
+      actual = <div />;
+      expected = <div />;
+      expect(expected).toEqualJSX(actual);
+    });
+    it('should succeed if negated expectation is true', () => {
+      actual = <div />;
+      expected = <span />;
+      expect(expected).not.toEqualJSX(actual);
+    });
     it('no message on equal', () => {
       actual = <div/>;
       expected = <div/>;
@@ -92,7 +102,7 @@ describe('jasmine-expect-jsx', () => {
 
       expect(actual).toIncludeJSX(expected);
     });
-    it('should succeed if expected missing JSX is not present', () => {
+    it('should succeed if negated expectation is true', () => {
       actual = (
         <td className="test">
           <div id="match" />
@@ -101,6 +111,15 @@ describe('jasmine-expect-jsx', () => {
       expected = <div id="match_not_present" /> ;
 
       expect(actual).not.toIncludeJSX(expected);
+    });
+    it('should provide no message when expected is in actual', () => {
+      actual = <div/>;
+      expected = <div/>;
+
+      diff = toInclude(actual, expected);
+
+      expect(diff.pass).toBeTruthy();
+      expect(diff.message).toBeUndefined();
     });
     it('should generate a diff of lines', () => {
       actual = (
