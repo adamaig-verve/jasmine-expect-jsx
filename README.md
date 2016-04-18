@@ -50,5 +50,5 @@ expect(<div><span>Hello World!</span></div>).toIncludeJSX(<span>Hello World!</sp
 expect(<TestComponent />).toIncludeJSX(<SomeSubComponent />); // assuming <SomeSubComponent /> is rendered by TestComponent's render
 
 expect(<div><span>Hello World!</span></div>).not.toIncludeJSX(<span>Hello World!</span>);
-expect(<TestComponent />).not.toIncludeJSX(<SomeSubComponent />); // assuming <SomeSubComponent /> is rendered by TestComponent's render
+expect(<TestComponent />).not.toIncludeJSX(<SomeSubComponent />); // assuming <SomeSubComponent /> is not rendered by TestComponent's render
 ```
